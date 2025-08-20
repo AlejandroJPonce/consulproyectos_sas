@@ -6,8 +6,8 @@
     >
       <div class="p-10 z-10">
         <img
-          class="w-auto md:w-[1200px] lg:w-[1800px]"
-          src="../../assets/placeholder.png"
+          class="w-auto rounded-2xl md:w-[1200px] lg:w-[1800px]"
+          src="../../assets/placeholder-1.png"
           alt=""
         />
       </div>
