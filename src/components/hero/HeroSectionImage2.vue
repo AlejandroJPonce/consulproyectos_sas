@@ -4,7 +4,7 @@
     <div
       class="flex flex-col gap-5 md:gap-15 lg:gap-20 md:flex-row lg:flex-row w-full md:h-[calc(100vh-44px) lg:h-[calc(100vh-44px)] items-center justify-start bg-white p-15"
     >
-      <div class="p-10 z-100">
+      <div class="p-10 z-10">
         <img
           class="w-auto md:w-[1200px] lg:w-[1800px]"
           src="../../assets/placeholder.png"
