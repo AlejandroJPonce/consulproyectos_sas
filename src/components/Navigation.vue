@@ -28,6 +28,34 @@ const toggle_menu = ref(false);
 function change_toggle_menu_status() {
   toggle_menu.value = !toggle_menu.value;
 }
+
+// mantener el estado de estilo al dar click a la etiqueta <a />
+window.onload = function () {
+    const links = document.querySelectorAll("nav a");
+
+    // Recuperar el último enlace activo desde localStorage
+    const activeLink =  localStorage.getItem("activeLink") == '' ? 'home' : localStorage.getItem("activeLink");
+
+    if (activeLink) {
+      const link = document.querySelector(`a[data-link="${activeLink}"]`);
+      if (link) link.classList.add("active");
+    }
+
+    // Escuchar click en cada enlace
+    links.forEach((link) => {
+      link.addEventListener("click", () => {
+        // Quitar clase "active" de todos
+        links.forEach((l) => l.classList.remove("active"));
+
+        // Agregar clase al clicado
+        link.classList.add("active");
+
+        // Guardar en localStorage
+        localStorage.setItem("activeLink", link.dataset.link);
+      });
+    });
+  };
+
 </script>
 
 <template>
@@ -108,21 +136,25 @@ function change_toggle_menu_status() {
                 href="/"
                 aria-current="page"
                 class="rounded-md px-3 py-2 text-sm lg:text-md font-bold"
+                data-link="home"
                 >Inicio</a
               >
               <a
                 href="/conocenos"
                 class="rounded-md px-3 py-2 text-sm lg:text-md font-bold"
+                data-link="aboutUs"
                 >¿Quienes somos?</a
               >
               <a
                 href="/servicios"
                 class="rounded-md px-3 py-2 text-sm lg:text-md font-bold"
+                data-link="services"
                 >Servicios</a
               >
               <a
                 href="/galeria"
                 class="rounded-md px-3 py-2 text-sm lg:text-md font-bold"
+                data-link="gallery"
                 >Galería</a
               >
             </div>
@@ -153,3 +185,32 @@ function change_toggle_menu_status() {
     </div>
   </nav>
 </template>
+
+<style scoped>
+
+a {
+  position: relative; /* Necesario para el ::after */
+  padding: 5px 10px;
+  text-decoration: none;
+  color: white;
+}
+
+a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 10px;
+  width: 0;
+  height: 4px;
+  border-radius: 10%;
+  background-color: #3d7dbd;
+  transition: width 0.4s ease;
+}
+
+a:hover::after,
+a:focus::after,
+a.active::after {
+  width: 40%; /* Línea visible en hover, focus o si tiene la clase "active" */
+}
+
+</style>
