@@ -1,19 +1,39 @@
 <script setup>
 import { ref } from "vue";
-import imagen from "../../assets/placeholder-1.png"
+import imagen1 from "../../assets/gallery/gallery_1.jpg";
+import imagen2 from "../../assets/gallery/gallery_2.jpg";
+import imagen3 from "../../assets/gallery/gallery_3.jpg";
+import imagen4 from "../../assets/gallery/gallery_4.jpg";
+import imagen5 from "../../assets/gallery/gallery_5.jpg";
+import imagen6 from "../../assets/gallery/gallery_6.jpg";
+import imagen7 from "../../assets/gallery/gallery_7.jpg";
+import imagen8 from "../../assets/gallery/gallery_8.jpg";
+import imagen9 from "../../assets/gallery/gallery_9.jpg";
+import imagen10 from "../../assets/gallery/gallery_10.jpg";
+import imagen11 from "../../assets/gallery/gallery_11.jpg";
+import imagen12 from "../../assets/gallery/gallery_12.jpg";
+import imagen13 from "../../assets/gallery/gallery_13.jpg";
+import imagen14 from "../../assets/gallery/gallery_14.jpg";
+import imagen15 from "../../assets/gallery/gallery_15.jpg";
+import imagen16 from "../../assets/gallery/gallery_16.jpg";
 
 const images = [
-  imagen,
-  imagen,
-  imagen,
-  imagen,
-  imagen,
-  imagen,
-  imagen,
-  imagen,
-  imagen,
-  imagen,
-  
+  imagen1,
+  imagen2,
+  imagen3,
+  imagen4,
+  imagen5,
+  imagen6,
+  imagen7,
+  imagen8,
+  imagen9,
+  imagen10,
+  imagen11,
+  imagen12,
+  imagen13,
+  imagen14,
+  imagen15,
+  imagen16,
 ];
 
 const currentIndex = ref(0);
@@ -58,7 +78,7 @@ function getOpacity(index) {
 
 <template>
   <div
-    class="relative w-full flex flex-col items-center gap-10 bg-[#162746] py-20"
+    class="relative w-full flex flex-col items-center gap-10 bg-[var(--primary-color)] py-10"
   >
     <!-- Título -->
     <span class="text-white text-6xl font-bold">Galería</span>
@@ -69,7 +89,7 @@ function getOpacity(index) {
     <!-- Carrusel -->
     <div
       v-if="images.length"
-      class="relative w-[700px] h-[400px] sm:flex md:flex lg:flex items-center justify-center perspective-[1200px] hidden sm:visible primary-carousel"
+      class="relative w-[660px] h-[350px] sm:flex md:flex lg:flex items-center justify-center perspective-[1200px] hidden sm:visible primary-carousel"
     >
       <div class="relative w-full h-full">
         <div
@@ -89,7 +109,7 @@ function getOpacity(index) {
       <!-- Flechas -->
       <button
         @click="prev"
-        class="absolute left-[-300px] top-1/2 -translate-y-1/2 text-white rounded-full z-10"
+        class="absolute left-[-300px] top-1/2 -translate-y-1/2 text-white rounded-full z-10 cursor-pointer"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -106,7 +126,7 @@ function getOpacity(index) {
       </button>
       <button
         @click="next"
-        class="absolute right-[-300px] top-1/2 -translate-y-1/2 text-white rounded-full z-10"
+        class="absolute right-[-300px] top-1/2 -translate-y-1/2 text-white rounded-full z-10 cursor-pointer"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -124,14 +144,16 @@ function getOpacity(index) {
     </div>
 
     <!-- Carrusel -->
-    <img
+    <div class="w-full h-full flex items-center justify-center">
+      <img
         :src="images[currentIndex]"
         alt="Imagen carrusel"
-        class=" w-[300px] rounded-2xl sm:w-[600px] h-full object-cover transition-all duration-500 visible sm:hidden secondary-carousel"
+        class="w-[300px] h-[250px] rounded-2xl sm:w-[600px] sm:h-[400px] object-cover transition-all duration-500 visible sm:hidden secondary-carousel"
       />
+    </div>
 
     <!-- Indicadores -->
-    <div class="flex items-center gap-3 mt-4">
+    <div class="flex items-center gap-3 mt-4 primary-carousel">
       <span
         v-for="(img, index) in images"
         :key="index"
@@ -143,7 +165,7 @@ function getOpacity(index) {
 
     <!-- Miniaturas inferiores -->
     <div
-      class="mx-auto w-full overflow-auto flex flex-wrap sm:flex-nowrap items-center justify-center py-2 gap-5 px-2"
+      class="mx-auto w-full overflow-auto max-w-[900px] flex flex-wrap items-center justify-center py-2 gap-5 px-2"
     >
       <div
         v-for="(img, index) in images"
@@ -168,7 +190,7 @@ function getOpacity(index) {
     display: none;
   }
 
-  .secondary-carousel{
+  .secondary-carousel {
     display: initial;
   }
 }

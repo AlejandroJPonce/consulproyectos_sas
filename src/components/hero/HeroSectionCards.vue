@@ -19,7 +19,7 @@ const services = [
 
 <template>
   <section
-    class="relative w-full flex flex-col items-center justify-center bg-[#162746] gap-8"
+    class="relative w-full flex flex-col items-center justify-center bg-[var(--primary-color)] gap-8"
   >
     <div class="text-center mt-10">
       <span class="font-bold text-dark text-white text-2xl lg:text-4xl"

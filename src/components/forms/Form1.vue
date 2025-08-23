@@ -2,7 +2,7 @@
 
 <template>
   <div class="w-full text-center mb-9">
-    <span class="font-bold text-3xl text-[#162746]"> HABLEMOS </span>
+    <span class="font-bold text-3xl text-[var(--primary-color)]"> HABLEMOS </span>
     <p class="text-gray-500 font-normal text-sm mt-3">
       Déjanos tus datos y te contactaremos lo antes posible para ayudarte.
     </p>
@@ -95,7 +95,7 @@
       <textarea
         id="message"
         rows="4"
-        class="block p-2.5 w-full border text-sm bg-gray-50 rounded-lg border-b-2 border-gray-300 focus:ring-[#162746] dark:bg-transparent dark:border-[#162746] dark:placeholder-[#162746]/40 dark:text-[#162746]"
+        class="block p-2.5 w-full border text-sm bg-gray-50 rounded-lg border-b-2 border-gray-300 focus:ring-[var(--primary-color)] dark:bg-transparent dark:border-[var(--primary-color)] dark:placeholder-[var(--primary-color)]/40 dark:text-[var(--primary-color)]"
         placeholder="Cuentanos que necesitas..."
       ></textarea>
     </div>
@@ -106,20 +106,20 @@
           id="remember"
           type="checkbox"
           value=""
-          class="w-4 h-4 hover:cursor-pointer border border-[#162746] rounded-sm bg-gray-50 focus:ring-1 focus:ring-[#162746] dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-[#162746] dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800"
+          class="w-4 h-4 hover:cursor-pointer border border-[var(--primary-color)] rounded-sm bg-gray-50 focus:ring-1 focus:ring-[var(--primary-color)] dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-[var(--primary-color)] dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800"
           required
         />
       </div>
       <label for="remember" class="ms-2 text-sm font-medium text-gray-800 md:text-gray-500 lg:text-gray-500 ">
         He leído y acepto la
-        <span class="text-[#162746]">política de protección de datos</span>
+        <span class="text-[var(--primary-color)]">política de protección de datos</span>
       </label>
     </div>
 
     <div class="w-full text-center">
       <button
         type="submit"
-        class="text-white bg-[#162746] font-bold rounded-3xl text-lg w-full sm:w-auto px-10 py-2.5 text-center hover:bg-white hover:text-[#162746]"
+        class="text-white bg-[var(--primary-color)] font-bold rounded-3xl text-lg w-full sm:w-auto px-10 py-2.5 text-center hover:bg-white hover:text-[var(--primary-color)]"
       >
         Enviar
       </button>

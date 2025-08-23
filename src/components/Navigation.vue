@@ -1,5 +1,6 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from "vue";
+import router from "../router";
 
 const isScrolled = ref(false);
 
@@ -15,18 +16,14 @@ onUnmounted(() => {
   window.removeEventListener("scroll", handleScroll);
 });
 
-window.addEventListener("scroll", () => {
-  if (window.scrollY > 0) {
-    navi.classList.add("backdrop-blur-md", "bg-white/30");
-  } else {
-    navi.classList.remove("backdrop-blur-md", "bg-white/30");
-  }
-});
-
 const toggle_menu = ref(false);
 
 function change_toggle_menu_status() {
   toggle_menu.value = !toggle_menu.value;
+}
+
+function goHome () {
+  router.push('/')
 }
 
 // mantener el estado de estilo al dar click a la etiqueta <a />
@@ -63,8 +60,8 @@ window.onload = function () {
     :class="[
       'sticky top-0 left-0 transition-all duration-300 z-11 mx-h-[88px] w-full  after:pointer-events-none after:absolute after:inset-x-0 after:bottom-0 after:h-px after:bg-white/10',
       isScrolled
-        ? 'backdrop-blur-md bg-gradient-to-b bg-[#162746]/50'
-        : 'bg-[#162746]',
+        ? 'backdrop-blur-md bg-gradient-to-b bg-[var(--primary-color)]/50'
+        : 'bg-[var(--primary-color)]',
     ]"
   >
     <div class="mx-auto w-full px-2 sm:px-6 lg:px-10">
@@ -115,11 +112,18 @@ window.onload = function () {
           </div>
 
           <!-- logo img -->
-          <div class="flex shrink-0 items-center">
+          <div @click="goHome" class="flex shrink-0 items-center">
             <img
+              v-if="isScrolled"
               src="../assets/icon_cs.png"
               alt="Your Company"
-              :class="['h-10 w-auto']"
+              :class="[isScrolled ? 'ml-0' : 'ml-12', 'h-12 w-auto']"
+            />
+            <img
+              v-else
+              src="../assets/white_logo.webp"
+              alt="Your Company"
+              :class="['h-25 w-auto']"
             />
           </div>
 

@@ -5,7 +5,7 @@ import { ref } from 'vue'
 </script>
 
 <template>
-  <div class="lg:w-[200px] lg:h-[200px] w-[200px] h-[200px] rounded-full bg-[#162746]">
+  <div class="lg:w-[200px] lg:h-[200px] w-[200px] h-[200px] rounded-full bg-[var(--primary-color)]">
     <!-- Content goes here -->
   </div>
 </template>
