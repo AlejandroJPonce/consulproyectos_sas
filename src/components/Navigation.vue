@@ -1,16 +1,68 @@
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted, onUnmounted } from "vue";
+import router from "../router";
+
+const isScrolled = ref(false);
+
+function handleScroll() {
+  isScrolled.value = window.scrollY > 0;
+}
+
+onMounted(() => {
+  window.addEventListener("scroll", handleScroll);
+});
+
+onUnmounted(() => {
+  window.removeEventListener("scroll", handleScroll);
+});
 
 const toggle_menu = ref(false);
 
 function change_toggle_menu_status() {
   toggle_menu.value = !toggle_menu.value;
 }
+
+function goHome () {
+  router.push('/')
+}
+
+// mantener el estado de estilo al dar click a la etiqueta <a />
+window.onload = function () {
+    const links = document.querySelectorAll("nav a");
+
+    // Recuperar el último enlace activo desde localStorage
+    const activeLink =  localStorage.getItem("activeLink") == '' ? 'home' : localStorage.getItem("activeLink");
+
+    if (activeLink) {
+      const link = document.querySelector(`a[data-link="${activeLink}"]`);
+      if (link) link.classList.add("active");
+    }
+
+    // Escuchar click en cada enlace
+    links.forEach((link) => {
+      link.addEventListener("click", () => {
+        // Quitar clase "active" de todos
+        links.forEach((l) => l.classList.remove("active"));
+
+        // Agregar clase al clicado
+        link.classList.add("active");
+
+        // Guardar en localStorage
+        localStorage.setItem("activeLink", link.dataset.link);
+      });
+    });
+  };
+
 </script>
 
 <template>
   <nav
-    class="relative bg-[#162746] after:pointer-events-none after:absolute after:inset-x-0 after:bottom-0 after:h-px after:bg-white/10"
+    :class="[
+      'sticky top-0 left-0 transition-all duration-300 z-11 mx-h-[88px] w-full  after:pointer-events-none after:absolute after:inset-x-0 after:bottom-0 after:h-px after:bg-white/10',
+      isScrolled
+        ? 'backdrop-blur-md bg-gradient-to-b bg-[var(--primary-color)]/50'
+        : 'bg-[var(--primary-color)]',
+    ]"
   >
     <div class="mx-auto w-full px-2 sm:px-6 lg:px-10">
       <div class="relative flex h-22 items-center justify-between">
@@ -19,7 +71,7 @@ function change_toggle_menu_status() {
         >
           <!-- Mobile menu button-->
           <div
-            class="absolute inset-y-0 right-0 flex items-center sm:hidden mr-4"
+            class="absolute inset-y-0 right-0 flex items-center sm:hidden mr-5"
           >
             <button
               type="button"
@@ -31,8 +83,8 @@ function change_toggle_menu_status() {
                 v-if="!toggle_menu"
                 viewBox="0 0 24 24"
                 fill="none"
-                stroke="currentColor"
-                stroke-width="1"
+                :stroke="[isScrolled ? 'currentColor' : 'currentColor']"
+                stroke-width="2"
                 data-slot="icon"
                 aria-hidden="true"
                 class="size-7 in-aria-expanded:hidden"
@@ -60,37 +112,53 @@ function change_toggle_menu_status() {
           </div>
 
           <!-- logo img -->
-          <div class="flex shrink-0 items-center">
+          <div @click="goHome" class="flex shrink-0 items-center">
             <img
-              src="../assets/white_logo_1.png"
+              v-if="isScrolled"
+              src="../assets/icon_cs.png"
               alt="Your Company"
-              class="h-16 w-auto"
+              :class="[isScrolled ? 'ml-0' : 'ml-12', 'h-12 w-auto']"
+            />
+            <img
+              v-else
+              src="../assets/white_logo.webp"
+              alt="Your Company"
+              :class="['h-25 w-auto']"
             />
           </div>
 
           <!-- navigation routes -->
           <div class="hidden sm:ml-6 sm:block">
-            <div class="flex h-full items-center space-x-4">
+            <div
+              :class="[
+                'flex transition-all duration-300 h-full items-center space-x-4',
+                isScrolled ? 'text-white' : 'text-white',
+              ]"
+            >
               <!-- Current: "bg-gray-950/50 text-white", Default: "text-gray-300 hover:bg-white/5 hover:text-white" -->
               <a
                 href="/"
                 aria-current="page"
-                class="rounded-md px-3 py-2 text-sm font-bold text-white"
+                class="rounded-md px-3 py-2 text-sm lg:text-md font-bold"
+                data-link="home"
                 >Inicio</a
               >
               <a
                 href="/conocenos"
-                class="rounded-md px-3 py-2 text-sm font-bold text-white"
+                class="rounded-md px-3 py-2 text-sm lg:text-md font-bold"
+                data-link="aboutUs"
                 >¿Quienes somos?</a
               >
               <a
                 href="/servicios"
-                class="rounded-md px-3 py-2 text-sm font-bold text-white"
+                class="rounded-md px-3 py-2 text-sm lg:text-md font-bold"
+                data-link="services"
                 >Servicios</a
               >
               <a
-                href="#"
-                class="rounded-md px-3 py-2 text-sm font-bold text-white"
+                href="/galeria"
+                class="rounded-md px-3 py-2 text-sm lg:text-md font-bold"
+                data-link="gallery"
                 >Galería</a
               >
             </div>
@@ -101,25 +169,52 @@ function change_toggle_menu_status() {
 
     <div id="mobile-menu" :class="{ hidden: !toggle_menu }">
       <div
-        class="space-y-1 px-2 pt-2 pb-3 flex items-center justify-center"
+        :class="[
+          'space-y-0 px-2 pt-2 pb-3 flex items-center justify-center',
+          isScrolled ? 'text-white' : 'text-white',
+        ]"
       >
-        <!-- Current: "bg-gray-950/50 text-white", Default: "text-gray-300 hover:bg-white/5 hover:text-white" -->
         <a
           href="/"
           aria-current="page"
-          class="rounded-md px-3 py-2 text-sm font-bold text-white"
+          class="rounded-md px-3 py-2 text-sm font-bold"
           >Inicio</a
         >
-        <a href="#" class="rounded-md px-3 py-2 text-sm font-bold text-white"
+        <a href="/conocenos" class="rounded-md px-3 py-2 text-sm font-bold"
           >¿Quienes somos?</a
         >
-        <a href="#" class="rounded-md px-3 py-2 text-sm font-bold text-white"
-          >Servicios</a
-        >
-        <a href="#" class="rounded-md px-3 py-2 text-sm font-bold text-white"
-          >Galería</a
-        >
+        <a href="/servicios" class="rounded-md px-3 py-2 text-sm font-bold">Servicios</a>
+        <a href="/galeria" class="rounded-md px-3 py-2 text-sm font-bold">Galería</a>
       </div>
     </div>
   </nav>
 </template>
+
+<style scoped>
+
+a {
+  position: relative; /* Necesario para el ::after */
+  padding: 5px 10px;
+  text-decoration: none;
+  color: white;
+}
+
+a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 10px;
+  width: 0;
+  height: 4px;
+  border-radius: 10%;
+  background-color: #3d7dbd;
+  transition: width 0.4s ease;
+}
+
+a:hover::after,
+a:focus::after,
+a.active::after {
+  width: 40%; /* Línea visible en hover, focus o si tiene la clase "active" */
+}
+
+</style>

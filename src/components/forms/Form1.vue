@@ -1,21 +1,55 @@
-<script setup></script>
+<script setup>
+
+import { ref } from 'vue';
+import emailjs from "@emailjs/browser";
+
+
+const form = ref(null);
+const sending = ref(false);
+const message = ref("");
+
+async function sendEmail() {
+  try {
+    sending.value = true;
+    try {
+      await emailjs.sendForm(
+        "service_fl8m81h", // tu ID de servicio en EmailJS
+        "template_tn1t9zg", // tu ID de plantilla
+        form.value, // referencia al formulario
+        "Zi2RwQqXitDtUso7G", // tu clave pública
+      );
+      message.value = "✅ Mensaje enviado con éxito!";
+    } catch (error) {
+      console.error(error);
+      message.value = "❌ Error al enviar el mensaje.";
+    } finally {
+      sending.value = false;
+    }
+  } catch (error) {
+    throw error;
+  }
+}
+
+</script>
 
 <template>
   <div class="w-full text-center mb-9">
-    <span class="font-bold text-3xl text-[#162746]"> HABLEMOS </span>
+    <span class="font-bold text-3xl text-[var(--primary-color)]">
+      HABLEMOS
+    </span>
     <p class="text-gray-500 font-normal text-sm mt-3">
       Déjanos tus datos y te contactaremos lo antes posible para ayudarte.
     </p>
   </div>
 
-  <form class="max-w-md mx-auto">
+  <form ref="form" class="max-w-md mx-auto" @submit.prevent="sendEmail">
     <div class="grid md:grid-cols-2 md:gap-6">
       <div class="relative z-0 w-full mb-5 group">
         <input
           type="text"
-          name="floating_first_name"
+          name="name"
           id="floating_first_name"
-          class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+          class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 focus:outline-none focus:ring-0 focus:border-[var(--primary-color)] peer"
           placeholder=" "
           required
         />
@@ -28,9 +62,9 @@
       <div class="relative z-0 w-full mb-5 group">
         <input
           type="text"
-          name="floating_last_name"
+          name="last_name"
           id="floating_last_name"
-          class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+          class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 focus:outline-none focus:ring-0 focus:border-[var(--primary-color)] peer"
           placeholder=" "
           required
         />
@@ -44,9 +78,9 @@
     <div class="relative z-0 w-full mb-5 group">
       <input
         type="email"
-        name="floating_email"
+        name="email"
         id="floating_email"
-        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 focus:outline-none focus:ring-0 focus:border-[var(--primary-color)] peer"
         placeholder=" "
         required
       />
@@ -60,10 +94,10 @@
       <div class="relative z-0 w-full mb-5 group">
         <input
           type="tel"
-          pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-          name="floating_phone"
+          pattern="[0-9]{3}[0-9]{3}[0-9]{4}"
+          name="phone"
           id="floating_phone"
-          class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+          class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 focus:outline-none focus:ring-0 focus:border-[var(--primary-color)] peer"
           placeholder=" "
           required
         />
@@ -76,9 +110,9 @@
       <div class="relative z-0 w-full mb-5 group">
         <input
           type="text"
-          name="floating_company"
+          name="city"
           id="floating_company"
-          class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+          class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 focus:outline-none focus:ring-0 focus:border-[var(--primary-color)] peer"
           placeholder=" "
           required
         />
@@ -91,11 +125,11 @@
     </div>
 
     <div class="flex flex-col items-start justify-start">
-      
       <textarea
         id="message"
+        name="message"
         rows="4"
-        class="block p-2.5 w-full border text-sm bg-gray-50 rounded-lg border-b-2 border-gray-300 focus:ring-[#162746] dark:bg-transparent dark:border-[#162746] dark:placeholder-[#162746]/40 dark:text-[#162746]"
+        class="block p-2.5 w-full border text-sm rounded-lg border-b-2 border-gray-300 focus:ring-[var(--primary-color)] dark:bg-transparent dark:border-[var(--primary-color)] dark:placeholder-[var(--primary-color)]/40 dark:text-[var(--primary-color)]"
         placeholder="Cuentanos que necesitas..."
       ></textarea>
     </div>
@@ -106,22 +140,27 @@
           id="remember"
           type="checkbox"
           value=""
-          class="w-4 h-4 hover:cursor-pointer border border-[#162746] rounded-sm bg-gray-50 focus:ring-1 focus:ring-[#162746] dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-[#162746] dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800"
+          class="w-4 h-4 hover:cursor-pointer border border-[var(--primary-color)] rounded-sm focus:ring-1 focus:ring-[var(--primary-color)] dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-[var(--primary-color)] dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800"
           required
         />
       </div>
-      <label for="remember" class="ms-2 text-sm font-medium text-gray-800 md:text-gray-500 lg:text-gray-500 ">
+      <label
+        for="remember"
+        class="ms-2 text-sm font-medium text-gray-800 md:text-gray-500 lg:text-gray-500"
+      >
         He leído y acepto la
-        <span class="text-[#162746]">política de protección de datos</span>
+        <span class="text-[var(--primary-color)]"
+          >política de protección de datos</span
+        >
       </label>
     </div>
 
     <div class="w-full text-center">
       <button
         type="submit"
-        class="text-white bg-[#162746] font-bold rounded-3xl text-lg w-full sm:w-auto px-10 py-2.5 text-center hover:bg-white hover:text-[#162746]"
+        class="text-white bg-[var(--primary-color)] w-[132px] font-bold rounded-3xl text-lg sm:w-auto px-10 py-2.5 text-center hover:bg-white hover:text-[var(--primary-color)]"
       >
-        Enviar
+        Enviar 
       </button>
     </div>
   </form>

@@ -1,9 +1,11 @@
 @import "tailwindcss";
 
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Lato", system-ui, sans-serif;
   line-height: 1.5;
   font-weight: 400;
+
+  overflow: unset;
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
@@ -13,6 +15,16 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  --primary-color: #162746;
+
+}
+
+@font-face {
+  font-family: "Lato";
+  src: url("@/assets/fonts/Lato-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
 }
 
 /* configuracion de la etiqueta <a /> */
@@ -21,8 +33,7 @@ a {
   position: relative; /* Permite posicionar la línea */
   display: inline-block; /* Hace que el enlace se comporte como un bloque pero en línea */
   padding-bottom: 5px; /* Espacio para la línea */
-  font-weight: 400; /* Grosor de la fuente */
-  font-size: 17px;
+  font-weight: 700;
 }
 
 a::after {

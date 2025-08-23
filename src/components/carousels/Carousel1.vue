@@ -21,7 +21,7 @@ const companies = [
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 197 2011 220"
-        style="fill: #162746; width: 100%; height: 100%; display: block"
+        style="fill: var(--primary-color); width: 100%; height: 100%; display: block"
         preserveAspectRatio="none"
       >
         <g
@@ -37,7 +37,7 @@ const companies = [
     <!-- Title -->
 
     <div>
-      <span class="font-bold text-dark text-[#162746] text-2xl lg:text-4xl"> CLIENTES </span>
+      <span class="font-bold text-dark text-[var(--primary-color)] text-2xl lg:text-4xl"> CLIENTES </span>
     </div>
 
     <!-- carousel -->
@@ -56,8 +56,8 @@ const companies = [
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
-        fill="#162746"
-        stroke="#162746"
+        fill="var(--primary-color)"
+        stroke="var(--primary-color)"
         stroke-width="1"
         class="size-20 hover:cursor-pointer"
       >
@@ -71,8 +71,8 @@ const companies = [
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
-        fill="#162746"
-        stroke="#162746"
+        fill="var(--primary-color)"
+        stroke="var(--primary-color)"
         stroke-width="1"
         class="size-20 hover:cursor-pointer"
       >

@@ -2,10 +2,16 @@
 import HeroWhiteSection from "../components/hero/HeroWhiteSection.vue";
 import foodPlate from "../assets/food_plate.webp";
 
-import handIcon from "../assets/hand_icon.png"
-import lightIcon from "../assets/light_icon.png"
-import zoomIcon from "../assets/zoom_icon.png"
-import socialIcon from "../assets/social_icon.png"
+import handIcon from "../assets/hand_icon.png";
+import lightIcon from "../assets/light_icon.png";
+import zoomIcon from "../assets/zoom_icon.png";
+import socialIcon from "../assets/social_icon.png";
+
+import imagen1 from "../assets/gallery/gallery_1.jpg";
+import imagen3 from "../assets/gallery/gallery_3.jpg";
+import imagen8 from "../assets/gallery/gallery_8.jpg";
+import imagen15 from "../assets/gallery/gallery_15.jpg";
+import imagen16 from "../assets/gallery/gallery_16.jpg";
 
 const items = [
   {
@@ -29,12 +35,11 @@ const items = [
     icon: socialIcon,
   },
 ];
-
 </script>
 
 <template>
   <section
-    class="relative flex flex-col gap-5 lg:gap-10 items-center justify-start w-full h-[850p] md:h-[calc(90vh) lg:h-[calc(90vh)] bg-[#162746] pb-40 pt-15 px-15 lg:py-15 lg:px-20"
+    class="relative flex flex-col gap-5 lg:gap-10 items-center justify-start w-full h-[850p] md:h-[calc(90vh) lg:h-[calc(90vh)] bg-[var(--primary-color)] pb-40 pt-15 px-15 lg:py-15 lg:px-20"
   >
     <div>
       <span class="text-white text-3xl md:text-8xl lg:text-8xl font-bold"
@@ -62,22 +67,18 @@ const items = [
         >
           <img
             class="w-[102px] lg:w-[310px] rounded-xl"
-            src="../assets/placeholder-1.png"
+            :src="imagen1"
             alt=""
           />
-          <img
-            class="w-[82px] lg:w-[260px] rounded-xl"
-            src="../assets/placeholder-1.png"
-            alt=""
-          />
+          <img class="w-[82px] lg:w-[260px] rounded-xl" :src="imagen3" alt="" />
           <img
             class="w-[102px] lg:w-[310px] rounded-xl"
-            src="../assets/placeholder-1.png"
+            :src="imagen8"
             alt=""
           />
           <img
             class="w-[82px] lg:w-[260px] rounded-xl"
-            src="../assets/placeholder-1.png"
+            :src="imagen16"
             alt=""
           />
         </div>
@@ -108,16 +109,20 @@ const items = [
     class="flex flex-col-reverse lg:flex-row gap-10 items-center justify-evenly w-full h-[650p] md:h-[calc(75vh) lg:h-[calc(75vh)] bg-[#e5e5e5] pb-20 lg:pb-30 px-15 lg:py-15 lg:px-20"
   >
     <div class="relative flex items-center justify-center lg:w-[50%]">
-      <img
-        class="w-[510px] rounded-4xl"
-        src="../assets/placeholder-1.png"
-        alt=""
-      />
+      <iframe
+        
+        class="rounded-2xl w-80 h-55 sm:w-125 sm:h-85"
+        :src="`https://www.youtube.com/embed/1n7N1D-AQbQ`"
+        title="consulproyectos"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
 
       <div
         class="absolute bg-white bottom-[-25px] lg:bottom-[-45px] rounded-2xl p-1 lg:p-3 max-w-[240px] lg:max-w-[400px] text-center align-middle"
       >
-        <span class="text-bold text-[#162746] text-1xl lg:text-3xl"
+        <span class="text-bold text-[var(--primary-color)] text-1xl lg:text-3xl"
           >Soluciones integrales, resultados confiables</span
         >
       </div>
@@ -144,7 +149,9 @@ const items = [
     <div
       class="flex flex-col items-center justify-center lg:justify-start w-full gap-10 lg:p-5 lg:gap-15"
     >
-      <span class="text-[#162746] font-bold text-center text-3xl lg:text-4xl">
+      <span
+        class="text-[var(--primary-color)] font-bold text-center text-3xl lg:text-4xl"
+      >
         VALORES CORPORATIVOS
       </span>
 
@@ -156,11 +163,13 @@ const items = [
           class="flex flex-col w-[160px] lg:w-full items-center justify-center gap-3 lg:gap-5 h-auto text-center"
         >
           <div
-            class="flex flex-col items-center justify-center w-[120px] h-[120px] lg:w-[200px] lg:h-[200px] bg-[#162746] rounded-full p-6 lg:p-10"
+            class="flex flex-col items-center justify-center w-[120px] h-[120px] lg:w-[200px] lg:h-[200px] bg-[var(--primary-color)] rounded-full p-6 lg:p-10"
           >
             <img :src="info.icon" alt="" />
           </div>
-          <span class="text-[#162746] text-lg lg:text-2xl max-w-[120px] lg:max-w-[150px]">
+          <span
+            class="text-[var(--primary-color)] text-lg lg:text-2xl max-w-[120px] lg:max-w-[150px]"
+          >
             {{ info.title }}
           </span>
         </div>
@@ -168,3 +177,5 @@ const items = [
     </div>
   </HeroWhiteSection>
 </template>
+
+<style scoped></style>

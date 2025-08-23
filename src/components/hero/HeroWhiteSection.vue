@@ -3,7 +3,7 @@ const props = defineProps(["bgColor"]);
 </script>
 <template>
   <section
-    class="relative w-full h-[650px] md:h-[calc(100vh)] lg:h-[calc(110vh)] p-5"
+    class="relative w-full h-[900px] sm:h-100vh"
     :style="{ backgroundColor: props.bgColor ?? 'white' }"
   >
     <slot></slot>

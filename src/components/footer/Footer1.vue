@@ -1,7 +1,7 @@
 <script setup></script>
 <template>
   <section
-    class="relative flex flex-col gap-10 w-full h-[450px] lg:h-[550px] items-center justify-center bg-[#162746]"
+    class="relative flex flex-col gap-10 w-full h-[450px] lg:h-[550px] items-center justify-center bg-[var(--primary-color)]"
   >
     <div class="absolute top-0 lg:top-[-50px]">
       <img class="w-[300px] lg:w-[400px] h-auto" src="../../assets/white_logo.webp" alt="" />
