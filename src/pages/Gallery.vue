@@ -1,6 +1,7 @@
 <script setup>
 import ImagesCarousel from "../components/carousels/ImagesCarousel.vue";
 import HeroArtSection from "../components/hero/HeroArtSection.vue";
+
 </script>
 
 <template>
