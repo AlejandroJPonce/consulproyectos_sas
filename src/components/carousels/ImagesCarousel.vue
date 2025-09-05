@@ -1,21 +1,21 @@
 <script setup>
 import { ref } from "vue";
-import imagen1 from "../../assets/gallery/gallery_1.jpg";
-import imagen2 from "../../assets/gallery/gallery_2.jpg";
-import imagen3 from "../../assets/gallery/gallery_3.jpg";
-import imagen4 from "../../assets/gallery/gallery_4.jpg";
-import imagen5 from "../../assets/gallery/gallery_5.jpg";
-import imagen6 from "../../assets/gallery/gallery_6.jpg";
-import imagen7 from "../../assets/gallery/gallery_7.jpg";
-import imagen8 from "../../assets/gallery/gallery_8.jpg";
-import imagen9 from "../../assets/gallery/gallery_9.jpg";
-import imagen10 from "../../assets/gallery/gallery_10.jpg";
-import imagen11 from "../../assets/gallery/gallery_11.jpg";
-import imagen12 from "../../assets/gallery/gallery_12.jpg";
-import imagen13 from "../../assets/gallery/gallery_13.jpg";
-import imagen14 from "../../assets/gallery/gallery_14.jpg";
-import imagen15 from "../../assets/gallery/gallery_15.jpg";
-import imagen16 from "../../assets/gallery/gallery_16.jpg";
+import imagen1 from "../../assets/gallery/gallery1.jpg";
+import imagen2 from "../../assets/gallery/gallery2.jpg";
+import imagen3 from "../../assets/gallery/gallery3.jpg";
+import imagen4 from "../../assets/gallery/gallery4.jpg";
+import imagen5 from "../../assets/gallery/gallery5.jpg";
+import imagen6 from "../../assets/gallery/gallery6.jpg";
+import imagen7 from "../../assets/gallery/gallery7.jpg";
+import imagen8 from "../../assets/gallery/gallery8.jpg";
+import imagen9 from "../../assets/gallery/gallery9.jpg";
+import imagen10 from "../../assets/gallery/gallery10.jpg";
+import imagen11 from "../../assets/gallery/gallery11.jpg";
+import imagen12 from "../../assets/gallery/gallery12.jpg";
+import imagen13 from "../../assets/gallery/gallery13.jpg";
+import imagen14 from "../../assets/gallery/gallery14.jpg";
+import imagen15 from "../../assets/gallery/gallery15.jpg";
+import imagen16 from "../../assets/gallery/gallery16.jpg";
 
 const images = [
   imagen1,

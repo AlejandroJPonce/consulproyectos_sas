@@ -1,4 +1,12 @@
-<script setup></script>
+<script setup>
+
+import router from '../../router';
+
+function goAboutUs () {
+  router.push('/conocenos')
+}
+
+</script>
 <template>
   <section class="relative">
     <div
@@ -7,7 +15,7 @@
       <div class="z-1">
         <img
           class="w-auto rounded-2xl md:w-[1200px] lg:w-[2500px]"
-          src="../../assets/gallery/gallery_15.jpg"
+          src="../../assets/gallery/gallery15.jpg"
           alt=""
         />
       </div>
@@ -27,6 +35,7 @@
         </div>
         <button
           type="button"
+          @click="goAboutUs"
           class="text-white bg-[#3d7dbd] w-fit font-semibold px-10 py-2 text-lg rounded-full hover:text-[#3d7dbd] hover:bg-gray-200"
         >
           Ver más
