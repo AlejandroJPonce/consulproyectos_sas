@@ -7,11 +7,12 @@ import lightIcon from "../assets/light_icon.png";
 import zoomIcon from "../assets/zoom_icon.png";
 import socialIcon from "../assets/social_icon.png";
 
-import imagen1 from "../assets/gallery/gallery_1.jpg";
-import imagen3 from "../assets/gallery/gallery_3.jpg";
-import imagen8 from "../assets/gallery/gallery_8.jpg";
-import imagen15 from "../assets/gallery/gallery_15.jpg";
-import imagen16 from "../assets/gallery/gallery_16.jpg";
+import imagen1 from "../assets/gallery/gallery1.jpg";
+import imagen3 from "../assets/gallery/gallery3.jpg";
+import imagen8 from "../assets/gallery/gallery8.jpg";
+import imagen15 from "../assets/gallery/gallery15.jpg";
+import imagen16 from "../assets/gallery/gallery16.jpg";
+import { onMounted } from "vue";
 
 const items = [
   {
@@ -35,11 +36,21 @@ const items = [
     icon: socialIcon,
   },
 ];
+
+
+onMounted(() => {
+  window.scroll({
+    top: 0, // Scroll to 500 pixels from the top
+    left: 0,
+    behavior: "smooth", // Add smooth scrolling animation
+  });
+})
+
 </script>
 
 <template>
   <section
-    class="relative flex flex-col gap-5 lg:gap-10 items-center justify-start w-full h-[850p] md:h-[calc(90vh) lg:h-[calc(90vh)] bg-[var(--primary-color)] pb-40 pt-15 px-15 lg:py-15 lg:px-20"
+    class="relative flex flex-col gap-5 lg:gap-10 items-center justify-start w-full h-[850p] md:h-[calc(90vh) lg:h-[calc(90vh)] bg-[var(--primary-color)] pb-40 pt-15 px-15 lg:pt-35 lg:px-20"
   >
     <div>
       <span class="text-white text-3xl md:text-8xl lg:text-8xl font-bold"
@@ -66,18 +77,18 @@ const items = [
           class="absolute flex items-center justify-center p-10 w-full gap-1 lg:gap-5 top-[-65px] lg:top-[-150px]"
         >
           <img
-            class="w-[102px] lg:w-[310px] rounded-xl"
+            class="w-[102px] lg:w-[370px] rounded-xl"
             :src="imagen1"
             alt=""
           />
-          <img class="w-[82px] lg:w-[260px] rounded-xl" :src="imagen3" alt="" />
+          <img class="w-[82px] lg:w-[320px] rounded-xl" :src="imagen3" alt="" />
           <img
-            class="w-[102px] lg:w-[310px] rounded-xl"
+            class="w-[102px] lg:w-[370px] rounded-xl"
             :src="imagen8"
             alt=""
           />
           <img
-            class="w-[82px] lg:w-[260px] rounded-xl"
+            class="w-[82px] lg:w-[320px] rounded-xl"
             :src="imagen16"
             alt=""
           />

@@ -7,6 +7,7 @@ import emailjs from "@emailjs/browser";
 const form = ref(null);
 const sending = ref(false);
 const message = ref("");
+const remember = ref(false)
 
 async function sendEmail() {
   try {
@@ -139,11 +140,12 @@ async function sendEmail() {
         <input
           id="remember"
           type="checkbox"
-          value=""
+          v-model="remember"
           class="w-4 h-4 hover:cursor-pointer border border-[var(--primary-color)] rounded-sm focus:ring-1 focus:ring-[var(--primary-color)] dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-[var(--primary-color)] dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800"
           required
         />
       </div>
+
       <label
         for="remember"
         class="ms-2 text-sm font-medium text-gray-800 md:text-gray-500 lg:text-gray-500"
@@ -158,8 +160,10 @@ async function sendEmail() {
     <div class="w-full text-center">
       <button
         type="submit"
-        class="text-white bg-[var(--primary-color)] w-[132px] font-bold rounded-3xl text-lg sm:w-auto px-10 py-2.5 text-center hover:bg-white hover:text-[var(--primary-color)]"
-      >
+        :class="[
+          remember == false ? 'opacity-50 cursor-not-allowed' : '',
+          'text-white bg-[var(--primary-color)] w-[132px] font-bold rounded-3xl text-lg sm:w-auto px-10 py-2.5 text-center hover:bg-white hover:text-[var(--primary-color)']"
+        >
         Enviar 
       </button>
     </div>

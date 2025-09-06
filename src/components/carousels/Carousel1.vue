@@ -1,27 +1,33 @@
 <script setup>
 import ProfileCard from "../cards/ProfileCard.vue";
+import company from "../../assets/balance_icon.png";
 
 const companies = [
-  { id: 1, icon: "" },
-  { id: 2, icon: "" },
-  { id: 3, icon: "" },
-  { id: 5, icon: "" },
-  { id: 6, icon: "" },
-  { id: 7, icon: "" },
-  { id: 8, icon: "" },
-  { id: 9, icon: "" },
-  { id: 10, icon: "" },
+  { id: 1, icon: company },
+  { id: 2, icon: company },
+  { id: 3, icon: company },
+  { id: 5, icon: company },
+  { id: 6, icon: company },
+  { id: 7, icon: company },
+  { id: 8, icon: company },
+  { id: 9, icon: company },
+  { id: 10, icon: company },
 ];
 </script>
 <template>
   <div
-    class="relative w-full lg:px-55 min-h-[500px] md:min-h-[calc(90vh-44px)] lg:min-h-[calc(90vh-44px)] flex items-center justify-center flex-col bg-[#f3f3f3] gap-8"
+    class="relative w-full px-20 min-h-[600px] h-auto flex items-center justify-center flex-col bg-[#f3f3f3] gap-15 pt-10"
   >
     <div class="absolute w-full h-auto top-0 rotate-180">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 197 2011 220"
-        style="fill: var(--primary-color); width: 100%; height: 100%; display: block"
+        style="
+          fill: var(--primary-color);
+          width: 100%;
+          height: 100%;
+          display: block;
+        "
         preserveAspectRatio="none"
       >
         <g
@@ -35,53 +41,43 @@ const companies = [
     </div>
 
     <!-- Title -->
-
     <div>
-      <span class="font-bold text-dark text-[var(--primary-color)] text-2xl lg:text-4xl"> CLIENTES </span>
+      <span
+        class="font-bold text-dark text-[var(--primary-color)] text-2xl lg:text-5xl"
+      >
+        CLIENTES
+      </span>
     </div>
 
-    <!-- carousel -->
+    <!-- Clients list -->
     <div
-      class="z-10 w-full h-auto pl-26 pr-26 md:pl-11 md:pr-11 gap-10 flex flex-row justify-start md:justify-start lg:justify-start items-center overflow-x-auto overflow-y-hidden overflow-hidden"
+      class="w-full flex flex-row items-center justify-center gap-5 flex-wrap"
     >
-      <div v-for="company in companies" :key="company.id" class="">
-        <ProfileCard />
+      <div v-for="value in companies" :key="value" class="hover:scale-110">
+        <img :src="value.icon" class="h-20 sm:h-30" />
       </div>
-    </div>
-
-    <!-- carousel controls -->
-    <div
-      class="absolute flex flex-row items-center justify-between w-full h-50 mt-20 px-20 collapse md:visible lg:visible"
-    >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        fill="var(--primary-color)"
-        stroke="var(--primary-color)"
-        stroke-width="1"
-        class="size-20 hover:cursor-pointer"
-      >
-        <path
-          fill-rule="evenodd"
-          d="M7.72 12.53a.75.75 0 0 1 0-1.06l7.5-7.5a.75.75 0 1 1 1.06 1.06L9.31 12l6.97 6.97a.75.75 0 1 1-1.06 1.06l-7.5-7.5Z"
-          clip-rule="evenodd"
-        />
-      </svg>
-
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        fill="var(--primary-color)"
-        stroke="var(--primary-color)"
-        stroke-width="1"
-        class="size-20 hover:cursor-pointer"
-      >
-        <path
-          fill-rule="evenodd"
-          d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
-          clip-rule="evenodd"
-        />
-      </svg>
     </div>
   </div>
 </template>
+
+<style>
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 15s linear infinite;
+}
+
+.animate-marquee-none {
+   display: flex;
+  width: max-content;
+  animation: 15s linear infinite;
+}
+</style>

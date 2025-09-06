@@ -1,4 +1,12 @@
-<script setup></script>
+<script setup>
+function scrollToContact() {
+  window.scroll({
+    top: 3100, // Scroll to 500 pixels from the top
+    left: 0,
+    behavior: "smooth", // Add smooth scrolling animation
+  });
+}
+</script>
 <template>
   <section
     class="isImage flex flex-row gap-25 w-full h-[550px] md:h-[calc(100vh-88px) lg:h-[calc(100vh-88px)] items-center justify-start p-15 sm:p-25 bg-[#f3f3f3]"
@@ -19,6 +27,7 @@
       </div>
       <button
         type="button"
+        @click="scrollToContact"
         class="text-white bg-[#3d7dbd] w-fit font-semibold px-7 py-2 text-xs md:text-md lg:text-lg rounded-full hover:text-[#3d7dbd] hover:bg-white"
       >
         Contáctanos
@@ -29,7 +38,7 @@
 
 <style scoped>
 .isImage {
-  background-image: url("../../assets/gallery/gallery_9.jpg");
+  background-image: url("../../assets/gallery/gallery9.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: top;
