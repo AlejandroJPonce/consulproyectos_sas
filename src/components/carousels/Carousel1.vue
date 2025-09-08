@@ -12,11 +12,17 @@ const companies = [
   { id: 8, icon: company },
   { id: 9, icon: company },
   { id: 10, icon: company },
+  { id: 11, icon: company },
+  { id: 12, icon: company },
+  { id: 13, icon: company },
+  { id: 13, icon: company },
+  { id: 13, icon: company },
+  { id: 13, icon: company },
 ];
 </script>
 <template>
   <div
-    class="relative w-full px-20 min-h-[600px] h-auto flex items-center justify-center flex-col bg-[#f3f3f3] gap-15 pt-10"
+    class="relative w-full sm:px-20 min-h-[600px] h-auto flex items-center justify-center flex-col bg-[#f3f3f3] gap-5 sm:gap-15 sm:pt-10"
   >
     <div class="absolute w-full h-auto top-0 rotate-180">
       <svg
@@ -51,7 +57,7 @@ const companies = [
 
     <!-- Clients list -->
     <div
-      class="w-full flex flex-row items-center justify-center gap-5 flex-wrap"
+      class="w-full flex flex-row items-center justify-center gap-3 flex-wrap"
     >
       <div v-for="value in companies" :key="value" class="hover:scale-110">
         <img :src="value.icon" class="h-20 sm:h-30" />
